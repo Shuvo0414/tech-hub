@@ -54,7 +54,7 @@ const Products = () => {
           <p className=" text-3xl font-medium text-white">
             controller wireless
           </p>
-          <small className=" text-white text-base">Save Up to 40% Off</small>
+          <small className=" text-white text-base">Save Up to 30% Off</small>
           <div className="card-actions justify-end">
             <button className="p-2 rounded-sm text-white bg-[#0B99FF]">
               Buy Now
