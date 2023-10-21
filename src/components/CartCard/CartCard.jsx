@@ -1,9 +1,8 @@
-import { useState } from "react";
 import Swal from "sweetalert2";
 
-const CartCard = ({ product }) => {
-  const [remainingProduct, setRemainingProduct] = useState();
+const CartCard = ({ product, products, setProducts }) => {
   const { _id } = product;
+  // console.log(_id);
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -24,16 +23,17 @@ const CartCard = ({ product }) => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.deleteCount > 0) {
+            if (data.deletedCount > 0) {
               Swal.fire(
                 "Deleted!",
                 "Your product has been deleted.",
                 "success"
               );
-              const remaining = product.filter(
-                (products) => products._id !== _id
+              const remaining = products?.filter(
+                (produc) => produc._id !== _id
               );
-              setRemainingProduct(remaining);
+              // console.log(products);
+              setProducts(remaining);
             }
           });
       }

@@ -9,11 +9,13 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import BrandProducts from "../components/BrandProducts/BrandProducts";
 import ProductDetail from "../pages/ProductDetail/ProductDetail";
 import UpdateProducts from "../pages/UpdateProducts/UpdateProducts";
+import NotFound from "../pages/ErrorPage/NotFound";
 
 const Route = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
@@ -60,7 +62,13 @@ const Route = createBrowserRouter([
 
       {
         path: "/update/:id",
-        element: <UpdateProducts></UpdateProducts>,
+        element: (
+          <PrivateRoute>
+            <UpdateProducts></UpdateProducts>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5001/products/${params.id}`),
       },
     ],
   },

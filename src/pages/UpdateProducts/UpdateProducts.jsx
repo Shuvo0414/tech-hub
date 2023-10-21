@@ -1,4 +1,11 @@
+import { useLoaderData, useParams } from "react-router-dom";
+
 const UpdateProducts = () => {
+  const product = useLoaderData();
+  const { name, _id } = product;
+  const { id } = useParams();
+
+  console.log(product);
   const handleUpdateProduct = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -10,21 +17,31 @@ const UpdateProducts = () => {
     const rating = form.rating.value;
 
     // console.log(photo, name, brandname, type, price, rating, shortDescription);
+
     const newProducts = {
       photo,
       name,
-      brandname,
+      brandname: brandname.toLowerCase(),
       type,
       price,
       rating,
     };
     console.log(newProducts);
+    fetch(`http://localhost:5001/products/${id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(newProducts),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
     <div className=" p-4 bg-gray-200">
       <h2 className="text-4xl font-bold text-center mb-4 mt-4">
-        Update Product
+        Update Product {name}
       </h2>
       <form onSubmit={handleUpdateProduct}>
         {/* image and name */}
@@ -46,6 +63,7 @@ const UpdateProducts = () => {
             <input
               type="text"
               name="name"
+              defaultValue={name}
               className="input input-bordered w-full"
             />
           </div>

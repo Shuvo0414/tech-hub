@@ -8,7 +8,7 @@ const BrandProducts = () => {
   // console.log(brandName);
   const lowercaseBrandName = brandName.toLowerCase(); // Convert to lowercase
 
-  // console.log("Fetching products for brand:", lowercaseBrandName);
+  // console.log("fetching products for brand:", lowercaseBrandName);
 
   const [products, setProducts] = useState([]);
 
