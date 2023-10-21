@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+  const { _id } = product;
   return (
     <div className="border rounded-lg p-4 m-4 w-64">
       <img
@@ -21,9 +22,11 @@ const ProductCard = ({ product }) => {
             Details
           </button>
         </Link>
-        <button className="ml-4 bg-green-600 text-white py-2 px-4 rounded-md">
-          Update
-        </button>
+        <Link to={`/update/${_id}`}>
+          <button className="ml-4 bg-green-600 text-white py-2 px-4 rounded-md">
+            Update
+          </button>
+        </Link>
       </div>
     </div>
   );
