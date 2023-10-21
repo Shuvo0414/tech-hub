@@ -27,11 +27,14 @@ const UpdateProducts = () => {
       rating,
     };
     console.log(newProducts);
-    fetch(`http://localhost:5001/products/${id}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(newProducts),
-    })
+    fetch(
+      `https://assignment-10-server-side-eight-sigma.vercel.app/products/${id}`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(newProducts),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

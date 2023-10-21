@@ -24,7 +24,7 @@ const AddProduct = () => {
 
     // send data to server side
 
-    fetch("http://localhost:5001/products", {
+    fetch("https://assignment-10-server-side-eight-sigma.vercel.app/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newProducts),

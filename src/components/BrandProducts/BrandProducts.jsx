@@ -14,7 +14,9 @@ const BrandProducts = () => {
 
   useEffect(() => {
     if (lowercaseBrandName) {
-      fetch(`http://localhost:5001/products/${lowercaseBrandName}`)
+      fetch(
+        `https://assignment-10-server-side-eight-sigma.vercel.app/products/${lowercaseBrandName}`
+      )
         .then((response) => response.json())
         .then((data) => {
           setProducts(data);

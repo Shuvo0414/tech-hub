@@ -36,7 +36,10 @@ const Route = createBrowserRouter([
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5001/addToCart"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-eight-sigma.vercel.app/addToCart"
+          ),
       },
       {
         path: "/login",
@@ -57,7 +60,10 @@ const Route = createBrowserRouter([
             <ProductDetail></ProductDetail>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5001/products"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-eight-sigma.vercel.app/products"
+          ),
       },
 
       {
@@ -68,7 +74,9 @@ const Route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/products/${params.id}`),
+          fetch(
+            `https://assignment-10-server-side-eight-sigma.vercel.app/products/${params.id}`
+          ),
       },
     ],
   },

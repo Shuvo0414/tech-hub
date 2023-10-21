@@ -1,22 +1,25 @@
 import { useLoaderData } from "react-router-dom";
 import CartCard from "../../components/CartCard/CartCard";
-import { useState } from "react";
-// import { AuthContext } from "../../Provider/AuthProvider";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const MyCart = () => {
   const loadedCartData = useLoaderData();
   const [products, setProducts] = useState(loadedCartData);
 
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-  // const userProducts = loadedCartData.filter(
-  //   (product) => product.email === user.email
-  // );
+  useEffect(() => {
+    const userProducts = loadedCartData.filter(
+      (product) => product.email === user.email
+    );
+    setProducts(userProducts);
+  }, [loadedCartData, user]);
 
   return (
     <div className="flex flex-wrap justify-center">
       {products && products?.length > 0 ? (
-        products.map((product) => (
+        products?.map((product) => (
           <CartCard
             key={product._id}
             product={product}

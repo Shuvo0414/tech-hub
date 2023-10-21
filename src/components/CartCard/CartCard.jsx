@@ -17,9 +17,12 @@ const CartCard = ({ product, products, setProducts }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log("delete confirm");
-        fetch(`http://localhost:5001/addToCart/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment-10-server-side-eight-sigma.vercel.app/addToCart/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

@@ -43,13 +43,16 @@ const ProductDetail = ({ product }) => {
       email: user.email,
     };
 
-    fetch("http://localhost:5001/addToCart", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    })
+    fetch(
+      "https://assignment-10-server-side-eight-sigma.vercel.app/addToCart",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newProduct),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
