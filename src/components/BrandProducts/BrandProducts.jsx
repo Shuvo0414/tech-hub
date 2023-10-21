@@ -5,10 +5,10 @@ import AdvertisementSlider from "../AdvertisementSlider/AdvertisementSlider";
 
 const BrandProducts = () => {
   const { brandName } = useParams();
-  console.log(brandName);
+  // console.log(brandName);
   const lowercaseBrandName = brandName.toLowerCase(); // Convert to lowercase
 
-  console.log("Fetching products for brand:", lowercaseBrandName);
+  // console.log("Fetching products for brand:", lowercaseBrandName);
 
   const [products, setProducts] = useState([]);
 
@@ -18,7 +18,7 @@ const BrandProducts = () => {
         .then((response) => response.json())
         .then((data) => {
           setProducts(data);
-          console.log("Received data for brand:", data);
+          // console.log("Received data for brand:", data);
         })
         .catch((error) => {
           console.error("Error fetching products:", error);

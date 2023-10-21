@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useLoaderData, useParams } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ProductDetail = ({ product }) => {
   const [cart, setCart] = useState([]);
   const [productDetails, setProductDetails] = useState({});
   const lodadata = useLoaderData();
-  console.log(lodadata);
+  const { user } = useContext(AuthContext);
+
   const { productId } = useParams();
 
   useEffect(() => {
@@ -15,10 +18,43 @@ const ProductDetail = ({ product }) => {
     setProductDetails(productDetails);
   }, [productId, lodadata]);
 
-  console.log("Product:", product);
-
   const addToCart = () => {
     setCart([...cart, product]);
+
+    const {
+      _id,
+      photo,
+      name,
+      brandname,
+      type,
+      price,
+      rating,
+      shortDescription,
+    } = productDetails;
+
+    const newProduct = {
+      photo,
+      name,
+      brandname,
+      type,
+      price,
+      rating,
+      shortDescription,
+      email: user.email,
+    };
+
+    fetch("http://localhost:5001/addToCart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Product added to the cart");
+      });
   };
 
   return (
