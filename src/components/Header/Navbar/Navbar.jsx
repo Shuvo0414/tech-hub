@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import logoImg from "../../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import ThemeSwiter from "../../ThemeSwiter/ThemeSwiter";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -51,6 +52,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
+      <ThemeSwiter></ThemeSwiter>
       <div className="navbar-end">
         {user?.email ? (
           <div className="dropdown dropdown-end">
