@@ -1,5 +1,7 @@
 # About My Projects
 
+**Live Site:** [https://legendary-caramel-3525f2.netlify.app]
+
 1. - This project is a modern e-commerce web application developed using React and Node.js. It allows users to browse, purchase, and manage various electronic products. The application provides features for user authentication, a product catalog, a shopping cart, and the ability to update product information.
 
 2. - The project is built using React for the frontend, Node.js for the backend, and MongoDB as the database. It incorporates various libraries and frameworks like React Router and SweetAlert.
